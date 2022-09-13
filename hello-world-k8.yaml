@@ -1,7 +1,7 @@
 # kubectl create -f hello-world-k8.yaml
 # minikube service hello-world-ser --url
 # kubectl create -f https://github.com/javid-taheri/hello-world/blob/main/hello-world-k8.yaml
-# curl http://<any-node-ip>:32001 (eg, curl http://172.16.21.100:32001) 
+# curl http://<any-node-ip>:32001 (eg, curl http://172.16.21.100:32001)
 # Browser => http://<any-node-ip>:32001
 
 apiVersion: apps/v1
@@ -20,10 +20,6 @@ spec:
       containers:
         - name: hello-world
           image: javidtaheri/simple-programs-hello-world:v1
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           ports:
             - name: nodejs-port
               containerPort: 3000
@@ -42,4 +38,3 @@ spec:
       targetPort: nodejs-port
       protocol: TCP
       nodePort: 32001
-
