@@ -1,0 +1,43 @@
+# kubectl create -f hello-world-k8.yaml
+# minikube service hello-world-ser --url
+# kubectl create -f https://github.com/javid-taheri/hello-world/blob/main/hello-world-k8.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-world
+          image: javidtaheri/simple-programs-hello-world:v1
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - name: nodejs-port
+              containerPort: 3000
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-ser
+spec:
+  type: NodePort
+  selector:
+    app: hello-world
+  ports:
+    - port: 3000
+      targetPort: nodejs-port
+      protocol: TCP
+      nodePort: 32001
+
