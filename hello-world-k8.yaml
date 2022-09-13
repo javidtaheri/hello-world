@@ -21,7 +21,7 @@ spec:
       containers:
         - image: javidtaheri/simple-programs-hello-world:v1
           name: hello-world
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: "IfNotPresent"
           ports:
             - name: nodejs-port
               containerPort: 3000
