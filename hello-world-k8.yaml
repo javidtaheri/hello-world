@@ -8,6 +8,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world
+  namespace: default
 spec:
   selector:
     matchLabels:
@@ -18,8 +19,10 @@ spec:
         app: hello-world
     spec:
       containers:
-        - name: hello-world
-          image: javidtaheri/simple-programs-hello-world:v1
+        - image: javidtaheri/simple-programs-hello-world:v1
+          name: hello-world
+          imagePullPolicy: Always
+          resources: {}
           ports:
             - name: nodejs-port
               containerPort: 3000
