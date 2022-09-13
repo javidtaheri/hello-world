@@ -22,7 +22,11 @@ spec:
         - image: javidtaheri/simple-programs-hello-world:v1
           name: hello-world
           imagePullPolicy: Always
-          resources: {}
+          resources:
+             requests:
+                ephemeral-storage: "1Gi"
+             limits:
+                ephemeral-storage: "2Gi"
           ports:
             - name: nodejs-port
               containerPort: 3000
