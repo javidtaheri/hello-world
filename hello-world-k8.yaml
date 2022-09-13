@@ -1,6 +1,8 @@
 # kubectl create -f hello-world-k8.yaml
 # minikube service hello-world-ser --url
 # kubectl create -f https://github.com/javid-taheri/hello-world/blob/main/hello-world-k8.yaml
+# curl http://<any-node-ip>:32001 (eg, curl http://172.16.21.100:32001) 
+# Browser => http://<any-node-ip>:32001
 
 apiVersion: apps/v1
 kind: Deployment
