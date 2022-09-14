@@ -1,7 +1,7 @@
 # kubectl create -f hello-world-k8.yaml
 # minikube service hello-world-ser --url
 # kubectl create -f https://raw.githubusercontent.com/javidtaheri/hello-world/main/hello-world-k8.yaml
-# curl http://<any-node-ip>:32001 (eg, curl http://172.16.21.100:32001)
+# curl http://<any-node-ip>:32001 (eg, curl http://172.16.21.100:3XXXX)
 # Browser => http://<any-node-ip>:32001
 
 apiVersion: apps/v1
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-ser
+  name: hello-world
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: hello-world
   ports:
     - port: 3000
       targetPort: nodejs-port
       protocol: TCP
-      nodePort: 32001
+
